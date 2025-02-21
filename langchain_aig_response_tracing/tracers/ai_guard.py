@@ -54,8 +54,8 @@ class PangeaAIGuardCallbackHandler(BaseTracer):
             guarded = self._client.guard_text(x.text, recipe="pangea_llm_response_guard")
             assert guarded.result
 
-            if guarded.result.redacted_prompt:
-                x.message.content = guarded.result.redacted_prompt
+            if guarded.result.prompt_text and guarded.result.prompt_text != x.text:
+                x.message.content = guarded.result.prompt_text
                 ChatGeneration.model_validate(x, strict=True)
 
         return super().on_llm_end(response, run_id=run_id, **kwargs)

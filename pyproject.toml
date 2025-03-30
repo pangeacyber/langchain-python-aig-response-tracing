@@ -10,7 +10,7 @@ dependencies = [
     "langchain==0.3.21",
     "langchain-openai==0.3.11",
     "pangea-sdk==5.5.1",
-    "pydantic==2.10.6",
+    "pydantic==2.11.0",
 ]
 
 [tool.uv]
